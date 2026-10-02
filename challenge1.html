@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Social Page - Challenge 1</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="escape.js" defer></script>
+</head>
+<body>
+    <h1 class="challenge-title">Challenge 1: SQL Queries</h1>
+
+    <main class="challenge-container">
+        
+        <!-- IMAGE -->
+         <img src="images/bluepost1.jpg" alt="Blue the Colts Mascot" class="challenge-image">
+
+        <!-- USERNAME -->
+         <h2>@blue_the_colts_mascot</h2>
+
+        <!-- INSTRUCTIONS -->
+         <section class="instructions">
+            <h3>Instructions:</h3>
+            <p>Arrange the SQL command blocks in the correct order to build a working SQL query.</p>
+            <p class="hint">
+                <strong>Hint:</strong>
+                A SQL query starts by telling the database what you want to see, then where to find it.
+            </p>
+         </section>
+
+         <!-- SQL QUERY AREA -->
+          <section class="sql-area">
+            <h3>Build the Query</h3>
+
+            <!-- Drop zones -->
+             <div class="query-slots" id="querySlots">
+                <div class="query-slot" data-position="0">
+                    <span>Drop here</span>
+                </div>
+                <div class="query-slot" data-position="1">
+                    <span>Drop here</span>
+                </div>
+                <div class="query-slot" data-position="2">
+                    <span>Drop here</span>
+                </div>
+                <div class="query-slot" data-position="3">
+                    <span>Drop here</span>
+                </div>
+             </div>
+
+             <!-- Available blocks -->
+              <div class="sql-blocks" id="sqlBlocks">
+                <div class="sql-block" draggable="true" data-value="SELECT">SELECT</div>
+                <div class="sql-block" draggable="true" data-value="*">*</div>
+                <div class="sql-block" draggable="true" data-value="FROM">FROM</div>
+                <div class="sql-block" draggable="true" data-value="RIVALS">RIVALS</div>
+              </div>
+
+              <div class="query-buttons">
+                <button type="button" id="runQuery">Run Query</button>
+                <button type="button" id="resetQuery">Reset</button>
+              </div>
+              <p id="queryMessage" class="query-message"></p>
+          </section>
+    </main>
+
+    <!-- BACK BUTTON -->
+     <button type="button" class="back-button" onclick="window.location.href='index.html'">Back</button>
+
+    <!-- SUCCESS POPUP -->
+     <div class="popup-overlay" id="successPopup">
+        <div class="success-popup">
+            <button type="button" class="close-popup" id="closePopup" aria-label="Close">x</button>
+            <div class="success-icon">✓</div>
+
+            <h2>Query Successful!</h2>
+
+            <p>You found a working SQL query.</p>
+
+            <!-- FAKE SQL TABLE -->
+            <div class="fake-table-container">
+                <h3>RIVALS</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TEAM</th>
+                            <th>MESSAGE</th>
+                            <th>CODE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Opponent</td>
+                            <td>Good luck!</td>
+                            <td>Blue</td>
+                        </tr>
+                        <tr>
+                            <td>Opponent</td>
+                            <td>See you Sunday!</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>Opponent</td>
+                            <td>We know you're watching.</td>
+                            <td>17</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- NEXT CHALLENGE CLUE -->
+            <div class="next-clue">
+                <h3>Clue for the next challenge</h3>
+                <p>The password needs something Blue already knows.</p>
+                <p><strong>Look at the CODE column.</strong></p>
+            </div>
+            <button type="button" class="continue-button" id="continueButton">Continue</button>
+        </div>
+     </div>
+</body>
+</html>
