@@ -186,6 +186,286 @@ body {
     font-weight: bold;
 }
 
+/* CHALLENGE 1 */
+.sql-area {
+    margin-top: 20px;
+}
+
+.sql-area > h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.query-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.query-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 115px;
+    padding: 10px;
+    border: 3px dashed #9ba8b3;
+    border-radius: 30px;
+    background-color: #e9eef4;
+    color: #777;
+    font-size: 23px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.query-slot.drag-over {
+    border-color: #23698f;
+    background-color: #d5e9f5;
+}
+
+.query-slot .sql-block {
+    width: 100%;
+    margin: 0;
+}
+
+.sql-blocks {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    min-height: 130px;
+    padding: 5px;
+}
+
+.sql-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    min-height: 110px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #f5f6fb;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sql-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.sql-block:active {
+    cursor: grabbing;
+    transform: scale(0.97);
+}
+
+.query-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.query-buttons button,
+.continue-button {
+    padding: 13px 30px;
+    border: none;
+    border-radius: 25px;
+    background-color: #23698f;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.query-buttons button:hover,
+.continue-button:hover {
+    background-color: #174e6d;
+}
+
+#resetQuery {
+    background-color: #707b84;
+}
+
+#resetQuery:hover {
+    background-color: #59636a;
+}
+
+.query-message {
+    min-height: 28px;
+    margin: 15px 0 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.query-message.error {
+    color: #a32121;
+}
+
+.query-message.success {
+    color: #19733c;
+}
+
+.back-button {
+    margin: 15px 0 20px 16px;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 25px;
+    background-color: #dce3e8;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: white;
+}
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+}
+
+.popup-overlay.show {
+    display: flex;
+}
+
+.success-popup {
+    position: relative;
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 35px;
+    border-radius: 35px;
+    background-color: #e1e8ee;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    animation: popupAppear 0.25s ease;
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background-color: #26834a;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.success-popup h2 {
+    margin: 5px 0 10px;
+    font-size: 30px;
+}
+
+.success-popup > p {
+    font-size: 18px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: none;
+    background: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-popup:hover {
+    color: #000;
+}
+
+.fake-table-container {
+    margin: 25px 0;
+    padding: 18px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.fake-table-container h3 {
+    margin: 0 0 12px;
+    text-align: left;
+    font-size: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+th,
+td {
+    padding: 11px;
+    border: 1px solid #aeb8c0;
+    text-align: left;
+}
+
+th {
+    background-color: #23698f;
+    color: white;
+}
+
+td {
+    background-color: #f5f7f9;
+}
+
+.next-clue {
+    margin: 20px 0;
+    padding: 18px;
+    border-radius: 20px;
+    background-color: #fff4c7;
+    border: 2px solid #d6bd5b;
+    text-align: left;
+}
+
+.next-clue h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.next-clue p {
+    margin: 7px 0;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.continue-button {
+    background-color: #19733c;
+}
+
+.continue-button:hover {
+    background-color: #12562c;
+}
+
 /* MOBILE */
 
 @media (max-width: 750px) {
@@ -204,5 +484,39 @@ body {
 
     .challenge.active {
         transform: translateY(-7px) scale(1.03);
+    }
+
+    .challenge-container {
+        width: calc(100% - 20px);
+        padding: 25px;
+        border-radius: 30px;
+    }
+    
+    .challenge-image {
+        height: 250px;
+        border-radius: 25px;
+    }
+
+    .instructions p {
+        font-size: 18px;
+    }
+
+    .query-slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .sql-block {
+        min-width: 120px;
+        min-height: 80px;
+        font-size: 22px;
+    }
+
+    .query-buttons {
+        flex-direction: column;
+    }
+
+    .query-buttons button {
+        width: 100%;
     }
 }
