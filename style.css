@@ -108,12 +108,82 @@ body {
     gap: 25px;
 }
 
-.post-grid img {
+.post {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: 32px;
+    background-color: #ddd;
+}
+
+.post img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 25px;
     background-color: #dce3e8;
+}
+
+.challenge {
+    cursor: not-allowed;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.challenge.locked {
+    cursor: not-allowed;
+    filter: saturate(0.7);
+    opacity: 0.7;
+}
+
+.challenge.active {
+    cursor: pointer;
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 0 0 5px white, 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.challenge.active:hover {
+    transform: translateY(-18px) scale(1.05);
+    box-shadow: 0 0 0 6px white, 0 20px 35px rgba(0, 0, 0, 0.35);
+}
+
+.challenge-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 7px 12px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.challenge.locked .challenge-label {
+    display: none;
+}
+
+.challenge.complete {
+    cursor: default;
+    opacity: 0.75;
+    filter: saturate(0.7);
+}
+
+.challenge.complete::after {
+    content: "✓ SOLVED";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 7px 11px;
+    border-radius: 15px;
+    background-color: rgba(30, 125, 70, 0.95);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 /* MOBILE */
