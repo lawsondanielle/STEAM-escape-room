@@ -121,10 +121,9 @@ body {
 
 .post img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
+    display: block;
     object-fit: cover;
-    border-radius: 25px;
-    background-color: #dce3e8;
 }
 
 .challenge {
@@ -184,6 +183,51 @@ body {
     color: white;
     font-size: 13px;
     font-weight: bold;
+}
+
+/* CHALLENGE PAGES */
+
+.challenge-title {
+    margin: 18px 0;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+}
+
+.challenge-container {
+    width: min(980px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 35px 50px 25px;
+    background-color: #cbd4dc;
+    border-radius: 48px;
+}
+
+.challenge-image {
+    display: block;
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 45px;
+}
+
+.challenge-container > h2 {
+    margin: 12px 0 20px;
+    font-size: 25px;
+}
+
+.instructions h3 {
+    margin: 0 0 5px;
+    font-size: 24px;
+}
+
+.instructions p {
+    margin: 5px 0 22px;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+.instructions .hint {
+    margin-top: 30px;
 }
 
 /* CHALLENGE 1 */
@@ -757,139 +801,6 @@ td {
     overflow-wrap: anywhere;
 }
 
-/* CHALLENGE 3: PHISHING OR REAL ; the container is different here because of the different layout */
-
-.challenge3-container {
-    width: 94%;
-    max-width: 1250px;
-    margin: 30px auto;
-    padding: 25px;
-    box-sizing: border-box;
-}
-
-.challenge3-instructions {
-    margin: 0 0 45px;
-    color: white;
-    font-size: 1.25rem;
-    line-height: 1.5;
-}
-
-.challenge3-instructions h3 {
-    margin-bottom: 3px;
-}
-
-.challenge3-instructions p {
-    margin-top: 0;
-}
-
-.message-game {
-    display: grid;
-    grid-template-columns: 1.3fr 0.9fr;
-    gap: 35px;
-    align-items: stretch;
-}
-
-.inbox-panel {
-    min-width: 0;
-    padding: 20px;
-    background: #cbd4dc;
-    border-radius: 45px;
-    color: #080808;
-}
-
-.inbox-panel > h2 {
-    margin: 0 0 15px;
-    text-align: center;
-    font-size: 1.8rem;
-}
-
-.inbox-profile {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 25px;
-    padding: 0 5px;
-}
-
-.inbox-profile img {
-    width: 105px;
-    height: 105px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.inbox-profile h3 {
-    overflow-wrap: anywhere;
-    font-size: 1.2rem;
-}
-
-.message-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-height: 200px;
-}
-
-.message-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-    padding: 4px;
-    border: 2px solid transparent;
-    border-radius: 20px;
-    cursor: grab;
-    transition: background-color 0.15s, border-color 0.15s;
-}
-
-.message-card:hover {
-    background-color: rgba(255, 255, 255, 0.35);
-    border-color: #8c9eac;
-}
-
-.message-card:active {
-    cursor: grabbing;
-}
-
-.message-card.dragging {
-    opacity: 0.45;
-}
-
-.message-card > img {
-    width: 90px;
-    height: 90px;
-    flex: 0 0 90px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.message-content {
-    flex: 1;
-    min-width: 0;
-}
-
-.message-sender {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 8px;
-    padding: 9px 12px;
-    border-radius: 22px;
-    background: white;
-    font-size: 0.95rem;
-    font-weight: bold;
-    overflow-wrap: anywhere;
-}
-
-.message-bubble {
-    padding: 13px 16px;
-    border-radius: 28px;
-    background: white;
-    font-size: 1rem;
-    line-height: 1.45;
-    overflow-wrap: anywhere;
-}
-
 .sorting-panels {
     display: flex;
     flex-direction: column;
@@ -990,31 +901,6 @@ td {
     font-weight: bold;
 }
 
-/* FINAL HOMEPAGE SUCCESS POPUP */
-
-#finalSuccessPopup .success-popup {
-    width: 90%;
-    max-width: 600px;
-    box-sizing: border-box;
-}
-
-#finalSuccessPopup .success-icon {
-    margin-bottom: 15px;
-}
-
-#finalSuccessPopup h2 {
-    margin-bottom: 15px;
-}
-
-#finalSuccessPopup p {
-    line-height: 1.6;
-}
-
-#restartEscapeRoom {
-    margin-top: 15px;
-    cursor: pointer;
-}
-
 /* MOBILE */
 
 @media (max-width: 750px) {
@@ -1068,7 +954,7 @@ td {
     .query-buttons button {
         width: 100%;
     }
-    
+
     .password-columns {
         grid-template-columns: 1fr;
     }
@@ -1107,6 +993,31 @@ td {
     .password-buttons button {
         width: 100%;
     }
+}
+
+/* FINAL HOMEPAGE SUCCESS POPUP */
+
+#finalSuccessPopup .success-popup {
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+#finalSuccessPopup .success-icon {
+    margin-bottom: 15px;
+}
+
+#finalSuccessPopup h2 {
+    margin-bottom: 15px;
+}
+
+#finalSuccessPopup p {
+    line-height: 1.6;
+}
+
+#restartEscapeRoom {
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 @media (max-width: 850px) {
