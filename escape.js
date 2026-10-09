@@ -385,4 +385,159 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+    // CHALLENGE 3 - PHISHING OR REAL
+
+    const messageCards = document.querySelectorAll(".message-card");
+
+    // Only run this code on Challenge 3.
+    if (messageCards.length > 0) {
+        const messageList = document.getElementById("messageList");
+        const messageDropZones = document.querySelectorAll(".message-drop-zone");
+        const checkMessagesButton = document.getElementById("checkMessages");
+        const resetMessagesButton = document.getElementById("resetMessages");
+        const messageResult = document.getElementById("messageResult");
+        const messageSuccessPopup = document.getElementById("messageSuccessPopup");
+        const closeMessagePopup = document.getElementById("closeMessagePopup");
+        const continueMessageButton = document.getElementById("continueMessageButton");
+
+        let draggedMessage = null;
+
+        // MAKE MESSAGES DRAGGABLE
+
+        messageCards.forEach(function (card) {
+            card.addEventListener("dragstart", function (event) {
+                draggedMessage = card;
+                event.dataTransfer.effectAllowed = "move";
+                event.dataTransfer.setData("text/plain", card.dataset.answer);
+                card.classList.add("dragging");
+            });
+
+            card.addEventListener("dragend", function () {
+                card.classList.remove("dragging");
+                draggedMessage = null;
+            });
+        });
+
+        // MAKE THE PHISHING AND REAL PANELS DROP TARGETS
+
+        messageDropZones.forEach(function (dropZone) {
+            dropZone.addEventListener("dragover", function (event) {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = "move";
+                dropZone.classList.add("drag-over");
+            });
+
+            dropZone.addEventListener("dragleave", function (event) {
+                if (!dropZone.contains(event.relatedTarget)) {
+                    dropZone.classList.remove("drag-over");
+                }
+            });
+
+            dropZone.addEventListener("drop", function (event) {
+                event.preventDefault();
+                dropZone.classList.remove("drag-over");
+
+                if (!draggedMessage) {
+                    return;
+                }
+
+                // Move the entire message card into the selected panel.
+                dropZone.appendChild(draggedMessage);
+
+                // Remove the empty-panel instruction.
+                const dropMessage = dropZone.querySelector(".drop-message");
+
+                if (dropMessage) {
+                    dropMessage.remove();
+                }
+
+                messageResult.textContent = "";
+                messageResult.className = "query-message";
+            });
+        });
+
+        // CHECK THE ANSWERS
+
+        if (checkMessagesButton) {
+            checkMessagesButton.addEventListener("click", function () {
+                let totalPlaced = 0;
+                let allCorrect = true;
+
+                messageDropZones.forEach(function (dropZone) {
+                    const selectedCategory = dropZone.dataset.category;
+                    const cards = dropZone.querySelectorAll(".message-card");
+
+                    cards.forEach(function (card) {
+                        totalPlaced++;
+
+                        if (card.dataset.answer !== selectedCategory) {
+                            allCorrect = false;
+                        }
+                    });
+                });
+
+                // Make sure every message has been sorted.
+                if (totalPlaced !== messageCards.length) {
+                    messageResult.textContent = "Please sort all three messages into the Phishing or Real column.";
+                    messageResult.className = "query-message error";
+                    return;
+                }
+
+                if (allCorrect) {
+                    messageResult.textContent = "✓ Correct! You identified every message successfully.";
+                    messageResult.className = "query-message success";
+
+                    setTimeout(function () {
+                        if (messageSuccessPopup) {
+                            messageSuccessPopup.classList.add("show");
+                        }
+                    }, 500);
+                } else {
+                    messageResult.textContent = "✗ Not quite! Check the sender and the message for suspicious requests or offers.";
+                    messageResult.className = "query-message error";
+                }
+            });
+        }
+
+        // RESET THE PUZZLE
+
+        if (resetMessagesButton) {
+            resetMessagesButton.addEventListener("click", function () {
+                
+                // Return all messages to Blue's inbox.
+                messageCards.forEach(function (card) {
+                    messageList.appendChild(card);
+                });
+
+                // Restore the empty-column instructions.
+                messageDropZones.forEach(function (dropZone) {
+                    dropZone.innerHTML = `<p class="drop-message">Drop messages here</p>`;
+                });
+
+                messageResult.textContent = "";
+                messageResult.className = "query-message";
+
+                if (messageSuccessPopup) {
+                    messageSuccessPopup.classList.remove("show");
+                }
+            });
+        }
+
+        // CLOSE THE SUCCESS POPUP
+
+        if (closeMessagePopup) {
+            closeMessagePopup.addEventListener("click", function () {
+                messageSuccessPopup.classList.remove("show");
+            });
+        }
+
+        // COMPLETE CHALLENGE 3
+
+        if (continueMessageButton) {
+            continueMessageButton.addEventListener("click", function () {
+                completeChallenge(3);
+                window.location.href = "index.html";
+            });
+        }
+    }
 });
