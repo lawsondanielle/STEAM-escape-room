@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Social Page - Challenge 2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="escape.js" defer></script>
+</head>
+<body>
+    <h1 class="challenge-title">Challenge 2: Password Puzzle</h1>
+    <main class="challenge-container">
+
+        <!-- IMAGE -->
+         <img src="images/bluepost2.jpg" alt="Blue the Colts Mascot with a Colts player" class="challenge-image">
+
+        <!-- USERNAME -->
+         <h2>@blue_the_colts_mascot</h2>
+
+        <!-- INSTRUCTIONS -->
+         <section class="instructions">
+            <h3>Instructions:</h3>
+            <p>
+                Sort each password from the password box into the correct 
+                security level: Low, Medium, or High. Look at the length, 
+                use of number, capital letter, and special characters to 
+                decide how strong it is. Drag each password into the 
+                correct column.
+            </p>
+         </section>
+
+         <!-- PASSWORD PUZZLE -->
+          <section class="password-area">
+            
+            <!-- SECURITY LEVEL COLUMNS -->
+             <div class="password-columns">
+                
+                <!-- LOW -->
+                 <div class="password-column" data-level="low">
+                    <div class="password-column-header">Low</div>
+                    <div class="password-drop-zone">
+                        <p class="drop-message">Drop passwords here</p>
+                    </div>
+                 </div>
+
+                <!-- MEDIUM -->
+                 <div class="password-column" data-level="medium">
+                    <div class="password-column-header">Medium</div>
+                    <div class="password-drop-zone">
+                        <p class="drop-message">Drop passwords here</p>
+                    </div>
+                 </div>
+
+                <!-- HIGH -->
+                 <div class="password-column" data-level="high">
+                    <div class="password-column-header">High</div>
+                    <div class="password-drop-zone">
+                        <p class="drop-message">Drop passwords here</p>
+                    </div>
+                 </div>
+             </div>
+
+            <!-- PASSWORD BOX -->
+             <div class="password-box">
+                <h3>Password Box:</h3>
+                <div class="password-options" id="passwordOptions">
+                    <div class="password-item" draggable="true" data-password="Blue4TheWin!" data-level="medium">Blue4TheWin!</div>
+                    <div class="password-item" draggable="true" data-password="COltsBlue#12" data-level="medium">COltsBlue#12</div>
+                    <div class="password-item" draggable="true" data-password="Blue!Gallops#4Indy92" data-level="high">Blue!Gallops#4Indy92</div>
+                    <div class="password-item" draggable="true" data-password="blue2026" data-level="low">blue2026</div>
+                    <div class="password-item" draggable="true" data-password="blue" data-level="low">blue</div>
+                    <div class="password-item" draggable="true" data-password="HOrseshoe!Blue#Touchdown27" data-level="high">HOrseshoe!Blue#Touchdown27</div>
+                    <div class="password-item" draggable="true" data-password="Blue$Dances@Lucas#84!" data-level="high">Blue$Dances@Lucas#84!</div>
+                    <div class="password-item" draggable="true" data-password="colts123" data-level="low">colts123</div>
+                    <div class="password-item" draggable="true" data-password="BlueColts87" data-level="medium">BlueColts87</div>
+                </div>
+             </div>
+            <!-- BUTTONS -->
+             <div class="password-buttons">
+                <button type="button" id="checkPasswords">Check Passwords</button>
+                <button type="button" id="resetPasswords">Reset</button>
+             </div>
+             <p id="passwordMessage" class="query-message"></p>
+          </section>
+    </main>
+
+    <!-- BACK BUTTON -->
+     <button type="button" class="back-button" onclick="window.location.href='index.html'">Back</button>
+    
+    <!-- SUCCESS POPUP -->
+     <div class="popup-overlay" id="passwordSuccessPopup">
+        <div class="success-popup">
+            <button type="button" class="close-popup" id="closePasswordPopup" aria-label="Close">x</button>
+            <div class="success-icon">✓</div>
+            <h2>Password Security Check Complete!</h2>
+            <p>You correctly identified the security level of every password.</p>
+
+            <!-- NEXT CHALLENGE CLUE -->
+             <div class="next-clue">
+                <h3>Clue for the next challenge</h3>
+                <p>Blue is receiving messages from people claiming to know him.</p>
+                <p><strong>Not every message is what it appears to be.</strong></p>
+             </div>
+             <button type="button" class="continue-button" id="continuePasswordButton">Continue</button>
+        </div>
+     </div>
+</body>
+</html>
