@@ -990,6 +990,31 @@ td {
     font-weight: bold;
 }
 
+/* FINAL HOMEPAGE SUCCESS POPUP */
+
+#finalSuccessPopup .success-popup {
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+#finalSuccessPopup .success-icon {
+    margin-bottom: 15px;
+}
+
+#finalSuccessPopup h2 {
+    margin-bottom: 15px;
+}
+
+#finalSuccessPopup p {
+    line-height: 1.6;
+}
+
+#restartEscapeRoom {
+    margin-top: 15px;
+    cursor: pointer;
+}
+
 /* MOBILE */
 
 @media (max-width: 750px) {
