@@ -540,4 +540,28 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+
+    // FINAL HOMEPAGE SUCCESS POPUP
+
+    const finalSuccessPopup = document.getElementById("finalSuccessPopup");
+    const restartEscapeRoomButton = document.getElementById("restartEscapeRoom");
+    const homepageChallenges = document.querySelectorAll(".challenge");
+
+    // Show the popup only on the homepage after all 3 challenges are complete.
+    if (homepageChallenges.length > 0 && finalSuccessPopup && getProgress() >= 3) {
+        finalSuccessPopup.classList.add("show");
+    }
+
+    // RESET THE ENTIRE ESCAPE ROOM
+
+    if (restartEscapeRoomButton) {
+        restartEscapeRoomButton.addEventListener("click", function () {
+            
+            // Reset saved progress to the beginning.
+            setProgress(0);
+
+            // Return to a fresh homepage.
+            window.location.href = "index.html";
+        });
+    }
 });
