@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Social Page - Challenge 3</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="escape.js" defer></script>
+</head>
+<body>
+    <h1 class="challenge-title">Challenge 3: Phishing or Real</h1>
+    <main class="challenge3-container">
+        <section class="instructions challenge3-instructions">
+            <h3>Instructions:</h3>
+            <p>
+                Blue's inbox is full of messages, but some look suspicious! 
+                Read each message and decide whether it is phishing or real. 
+                Drag each message into the Phishing column or the Real column.
+            </p>
+        </section>
+        <section class="message-game">
+
+            <!-- LEFT SIDE: BLUE'S INBOX -->
+             <div class="inbox-panel">
+                <h2>Messages</h2>
+                <div class="inbox-profile">
+                    <img src="images/blueprofilepicture.jpg" alt="Blue the Colts mascot">
+                    <h3>@blue_the_colts_mascot</h3>
+                </div>
+                <div class="message-list" id="messageList">
+                    <article class="message-card" draggable="true" data-answer="phishing">
+                        <img src="images/toro.jpeg" alt="Sender avatar">
+                        <div class="message-content">
+                            <div class="message-sender">@toro_htown</div>
+                            <div class="message-bubble">
+                                URGENT! Your account will be deleted! 
+                                Click here and enter your password NOW!
+                            </div>
+                        </div>
+                    </article>
+                    <article class="message-card" draggable="true" data-answer="real">
+                        <img src="images/carly colts.jpeg" alt="Sender avatar">
+                        <div class="message-content">
+                            <div class="message-sender">@colts_owner_carly</div>
+                            <div class="message-bubble">
+                                Hey Blue! Reminder that practice starts 
+                                at 10:00 AM tomorrow. See you there!
+                            </div>
+                        </div>
+                    </article>
+                    <article class="message-card" draggable="true" data-answer="phishing">
+                        <img src="images/cheif.jpeg" alt="Sender avatar">
+                        <div class="message-content">
+                            <div class="message-sender">@kcwolf</div>
+                            <div class="message-bubble">
+                                CONGRATULATIONS BLUE!! You won FREE Colts 
+                                tickets! Click the link below to claim your prize!
+                            </div>
+                        </div>
+                    </article>
+                </div>
+             </div>
+
+            <!-- RIGHT SIDE: SORTING COLUMNS -->
+             <div class="sorting-panels">
+
+                <section class="sorting-panel">
+                    <h2>Phishing</h2>
+                    <p class="sorting-hint">Suspicious messages, scams, or requests for sensitive information.</p>
+                    <div class="message-drop-zone" data-category="phishing" aria-label="Drop phishing messages here">
+                        <p class="drop-message">Drop phishing messages here</p>
+                    </div>
+                </section>
+
+                <section class="sorting-panel">
+                    <h2>Real</h2>
+                    <p class="sorting-hint">Messages that appear legitimate and expected.</p>
+                    <div class="message-drop-zone" data-category="real" aria-label="Drop real messages here">
+                        <p class="drop-message">Drop real messages here</p>
+                    </div>
+                </section>
+
+             </div>
+        </section>
+
+        <div class="message-buttons">
+            <button type="button" id="checkMessages">Check Answers</button>
+            <button type="button" id="resetMessages">Reset</button>
+        </div>
+
+        <p id="messageResult" class="query-message" aria-live="polite"></p>
+    </main>
+
+    <button type="button" class="back-button" onclick="window.location.href='index.html'">Back</button>
+
+    <!-- SUCCESS POPUP-->
+     <div class="popup-overlay" id="messageSuccessPopup">
+        <div class="success-popup">
+            <button type="button" class="close-popup" id="closeMessagePopup" aria-label="Close">x</button>
+
+            <div class="success-icon">✓</div>
+            <h2>Challenge Complete!</h2>
+
+            <p>
+                Great job! You correctly identified the phishing messages 
+                and the real message in Blue's inbox.
+            </p>
+            <div class="next-clue">
+                <h3>Challenge Completed</h3>
+                <p>
+                    You helped Blue spot suspicious messages and protect
+                    his account. All three challenges are now complete!
+                </p>
+            </div>
+
+            <button type="button" class="continue-button" id="continueMessageButton">Finish Escape Room</button>
+        </div>
+     </div>
+</body>
+</html>
